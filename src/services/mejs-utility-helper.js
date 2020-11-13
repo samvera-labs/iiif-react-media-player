@@ -77,7 +77,7 @@ export function createTrackTags(tracks) {
   for (let i = 0, total = tracks.length; i < total; i++) {
     const track = tracks[i];
     tracksTags.push(
-      `<track srclang="en" kind="subtitles" type="${track.format}" src="${track.id}"></track>`
+      `<track srclang="en" kind="captions" label="English" type="${track.format}" src="${track.id}"></track>`
     );
   }
   return tracksTags;

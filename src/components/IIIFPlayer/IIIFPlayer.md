@@ -14,7 +14,7 @@ import {
 import MediaPlayer from '../MediaPlayer/MediaPlayer';
 import StructuredNavigation from '../StructuredNavigation/StructuredNavigation';
 
-<IIIFPlayer manifestUrl="https://dlib.indiana.edu/iiif_av/mahler-symphony-3/mahler-symphony-3.json">
+<IIIFPlayer manifestUrl="https://dlib.indiana.edu/iiif_av/iiif-player-samples/lunchroom-manners.json">
   <div style={{ display: 'flex' }}>
     <div>
       <MediaPlayer />

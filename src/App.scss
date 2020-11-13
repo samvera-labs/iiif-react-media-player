@@ -47,3 +47,16 @@
   font-size: 14px;
   background-color: whitesmoke;
 }
+
+.video-js .vjs-thumbnail {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin-top: 7px;
+  background: url('/src/assets/camera.svg');
+  background-repeat: no-repeat;
+}
+
+.video-js .vjs-control-bar {
+  display: flex !important;
+}

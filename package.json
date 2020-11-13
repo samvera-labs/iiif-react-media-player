@@ -64,10 +64,12 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
+    "@silvermine/videojs-quality-selector": "^1.2.4",
     "axios": "^0.21.0",
     "hls.js": "0.14.11",
     "manifesto.js": "^4.1.0",
-    "mediaelement": "^4.2.16"
+    "mediaelement": "^4.2.16",
+    "video.js": "^7.10.2"
   },
   "peerDependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.30",

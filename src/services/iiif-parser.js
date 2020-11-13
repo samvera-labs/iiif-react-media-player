@@ -82,10 +82,13 @@ export function getMediaInfo({ manifest, canvasIndex }) {
         return {
           src: item.id,
           // TODO: make type more generic, possibly use mime-db
-          format: item.getFormat() ? item.getFormat() : 'application/x-mpegurl',
-          quality: item.getLabel()[0] ? item.getLabel()[0].value : 'auto',
+          type: item.getFormat() ? item.getFormat() : 'application/x-mpegurl',
+          label: item.getLabel()[0] ? item.getLabel()[0].value : 'auto',
         };
       });
+
+      // Select the first source by default
+      sources[0].selected = true;
 
       let allTypes = choiceItems.map((item) => item.getType());
       let uniqueTypes = allTypes.filter((t, index) => {

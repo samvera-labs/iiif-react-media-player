@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import MediaElement from '@Components/MediaPlayer/MediaElement';
+import VideoJSPlayer from '@Components/VideoJSPlayer';
 import PropTypes from 'prop-types';
 import ErrorMessage from '@Components/ErrorMessage/ErrorMessage';
 import { getMediaInfo, getTracks } from '@Services/iiif-parser';
@@ -14,6 +15,29 @@ const MediaElementContainer = () => {
   const [error, setError] = useState(null);
 
   const { canvasIndex, manifest } = manifestState;
+  const isVideo = mediaType === 'video' ? true : false;
+  let videojsOptions = {
+    autoplay: false,
+    controls: true,
+    bigPlayButton: false,
+    width: 600,
+    height: 300,
+    sources: sources,
+    tracks: tracks,
+    // html5: {
+    //   nativeTextTracks: true,
+    // },
+    controlBar: {
+      children: [
+        'playToggle',
+        'progressControl',
+        'volumePanel',
+        'qualitySelector',
+        isVideo ? 'thumbnailButton' : '',
+        'fullscreenToggle',
+      ],
+    },
+  };
 
   useEffect(() => {
     if (manifest) {
@@ -26,6 +50,8 @@ const MediaElementContainer = () => {
       setMediaType(mediaType);
       setError(error);
       error ? setReady(false) : setReady(true);
+
+      videojsOptions.poster = manifest.thumbnail ? manifest.thumbnail.id : ''
     }
   }, [manifest]); // Re-run the effect when manifest changes
 
@@ -35,7 +61,7 @@ const MediaElementContainer = () => {
 
   return ready ? (
     <div data-testid={`mediaelement`} id="mediaelement">
-      <MediaElement
+      {/* <MediaElement
         controls
         crossorigin="anonymous"
         height={manifest.height || 360}
@@ -47,6 +73,10 @@ const MediaElementContainer = () => {
         sources={JSON.stringify(sources)}
         tracks={JSON.stringify(tracks)}
         width={manifest.width || 480}
+      /> */}
+      <VideoJSPlayer
+        options={videojsOptions}
+        isVideo={mediaType === 'video' ? true : false}
       />
     </div>
   ) : null;
